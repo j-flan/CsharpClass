@@ -50,7 +50,7 @@
         <ul id="horNav">
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li><a href="https://www.jhflanegan.com">Resume Site</a></li>
+            <li><a href="@Url.Action("Index", "Label", new { Area=""})">Mailing Label</a></li>
             <li><a href="https://j-flan.itch.io/j-boost">J-Boost</a></li>
         </ul>
     </nav>

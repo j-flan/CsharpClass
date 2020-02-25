@@ -38,10 +38,11 @@ a {
     margin-right: 2%;
     box-shadow: slategray 5px 5px;
 }
-a:hover{
-    background-color: red;
-    color: white;
-}
+    a:hover {
+        text-decoration: none;
+        background-color: red;
+        color: white;
+    }
 h4 {
     color: blue;
     text-align: center;

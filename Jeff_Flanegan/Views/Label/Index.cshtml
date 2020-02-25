@@ -1,0 +1,101 @@
+﻿@model Jeff_Flanegan.Models.LabelViewModel
+
+@{
+    ViewBag.Title = "Mailing Label";
+}
+
+<style type="text/css">
+    table {
+        padding: 5px;
+    }
+    h2{
+        margin-left: 5%;
+    }
+    form{
+        display: block;
+        float: left;
+        width: 50%;
+        border: solid 2px gray;
+        margin-left: 10%;
+        border-radius: 5px;
+        background-color: aliceblue;
+    }
+    fieldset {
+        
+        margin-top: 2%;
+        margin-left: 5%;
+    }
+
+    .Output {
+        border: solid 2px red;
+        display: inline-block;
+        margin-left: 50px;
+        padding: 5px;
+        width: 300px;
+        background-color: white;
+        white-space: pre-line;
+    }
+    input{
+        background-color: white;
+    }
+    input:hover{
+        background-color: red;
+        color: white;
+    }
+    
+</style>
+<div id="form">
+    <h2>Mailing Labels Homework</h2>
+    @using (Html.BeginForm("Index", "Label", new { Area = "" }, FormMethod.Post, new { id = "Label" }))
+    {
+        <fieldset>
+            <legend>Address Information</legend>
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Label.Fname)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Label.Lname)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Label.Address)
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Label.City)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.Label.State, Model.StateList)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip Code:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Label.Zip)
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Mailing Label</legend>
+            <input type="submit" value="Get Mailing Label"><label class="Output">@Model.Label.MailingLabel</label>
+        </fieldset>
+
+    }
+</div>
+
