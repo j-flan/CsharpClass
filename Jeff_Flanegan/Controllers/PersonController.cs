@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Jeff_Flanegan.Models;
 using System.Web.Mvc;
 
 namespace Jeff_Flanegan.Controllers
 {
     public class PersonController : Controller
     {
-        // GET: Person
         public ActionResult Index()
         {
-            return View();
+            PersonViewModel model = new PersonViewModel();
+
+            return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Index(PersonViewModel model)
+        {
+
+            if (ModelState.IsValid)
+                return View(model);
+
+            PersonViewModel notmodel = new PersonViewModel();
+            return View(notmodel);
+        }
     }
 }

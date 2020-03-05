@@ -1,0 +1,94 @@
+﻿@model Jeff_Flanegan.Models.WageCalculator
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table {
+        padding: 5px;
+    }
+
+    h2 {
+        margin-left: 5%;
+    }
+    td{
+        font-weight: bold;
+    }
+    form {
+        display: block;
+        float: left;
+        width: 35%;
+        border: solid 2px gray;
+        margin-left: 15%;
+        border-radius: 5px;
+        background-color: aliceblue;
+    }
+
+    .Output {
+        border: solid 2px gray;
+        display: inline-block;
+        margin-left: 33px;
+        padding: 5px;
+        width: 190px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    input {
+        background-color: white;
+        margin: 2%;
+        margin-left: 20px;
+        border-radius: 5px;
+
+    }
+
+    input:hover {
+        background-color: gray;
+        color: white;
+    }
+</style>
+<h2>Wage Calculator</h2>
+
+<div id="form">
+    @using (Html.BeginForm("Index", "WageCalculator", new { Area = "" }, FormMethod.Post, new { id = "Label" }))
+    {
+        <table>
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Employee Number
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.EmployeeNumber)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Hours
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Hours)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Rate
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Rate)
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Get Wage" />
+        <div class="Output">@Model.Wage</div>
+    }
+
+</div>
+
+

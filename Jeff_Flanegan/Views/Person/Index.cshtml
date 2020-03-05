@@ -1,18 +1,120 @@
-﻿
+﻿@model Jeff_Flanegan.Models.PersonViewModel
+
 @{
-    Layout = null;
+    ViewBag.Title = "Mailing Label";
 }
 
-<!DOCTYPE html>
+<style type="text/css">
+    table {
+        padding: 5px;
+    }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Person</title>
-</head>
-<body>
-    <div> 
-       <h2>I am a person!</h2>
-    </div>
-</body>
-</html>
+    h2 {
+        margin-left: 5%;
+    }
+
+    form {
+        display: block;
+        float: left;
+        width: 50%;
+        border: solid 2px gray;
+        margin-left: 10%;
+        border-radius: 5px;
+        background-color: aliceblue;
+    }
+
+    fieldset {
+        margin-top: 2%;
+        margin-left: 5%;
+    }
+
+    .Output {
+        display: inline-block;
+        margin-left: 50px;
+        padding: 5px;
+        width: 300px;
+        background-color: white;
+        white-space: pre-line;
+    }
+
+    input {
+        background-color: white;
+    }
+
+        input:hover {
+            background-color: lightgreen;
+        }
+
+    .field-validation-valid {
+        display: none;
+    }
+
+    input.input-validation-error {
+        background-color: peachpuff;
+        border: 2px solid red;
+    }
+
+    .field-validation-error {
+        color: red;
+    }
+</style>
+<div id="form">
+    <h2>Mailing Labels Homework</h2>
+    @using (Html.BeginForm("Index", "Person", new { Area = "" }, FormMethod.Post, new { id = "Label" }))
+    {
+        <fieldset>
+            <legend>Address Information</legend>
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Person.Fname)
+                        @Html.ValidationMessageFor(m => m.Person.Fname, "First Name is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Person.Lname)
+                        @Html.ValidationMessageFor(m => m.Person.Lname, "Last Name is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Person.Address)
+                        @Html.ValidationMessageFor(m => m.Person.Address, "Address is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Person.City)
+                        @Html.ValidationMessageFor(m => m.Person.City, "City is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.Person.State, Model.StateList)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip Code:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Person.Zip)
+                        @Html.ValidationMessageFor(m => m.Person.Zip, "Valid 5 digit Zip Code is required.")
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Mailing Label</legend>
+            <input type="submit" value="Get Mailing Label"><label class="Output">@Model.Person.MailingLabel</label>
+        </fieldset>
+
+    }
+</div>
+

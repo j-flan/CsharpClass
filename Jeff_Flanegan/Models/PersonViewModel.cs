@@ -3,9 +3,9 @@ using System.Web.Mvc;
 
 namespace Jeff_Flanegan.Models
 {
-    public class LabelViewModel
+    public class PersonViewModel
     {
-        public Label Label { get; set; }
+        public Person Person { get; set; }
 
         public SelectList StateList
         {
@@ -26,12 +26,11 @@ namespace Jeff_Flanegan.Models
             }
         }
 
-
-        public LabelViewModel()
+        public PersonViewModel()
         {
-            Label = new Label();
+            Person = new Person();
         }
-    }    
+    }
 
     public class ListItem
     {
