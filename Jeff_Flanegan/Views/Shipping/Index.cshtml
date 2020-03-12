@@ -1,0 +1,218 @@
+﻿@model Jeff_Flanegan.Models.PackageViewModel
+
+@{
+    ViewBag.Title = "Shipping Calculator";
+}
+
+<style type="text/css">
+    table {
+        padding: 5px;
+    }
+    #radio{
+        margin-left:5px;
+    }
+
+    h2 {
+        margin-left: 5%;
+    }
+
+    form {
+        display: block;
+        float: left;
+        width: 70%;
+        border: solid 2px gray;
+        margin-left: 5%;
+        border-radius: 5px;
+        background-color: aliceblue;
+    }
+
+    fieldset {
+        background-color: azure;
+        display: block;
+        float: left;
+        width:45%;
+        border: 1px solid green;
+        margin-top: 2%;
+        margin-left: 2%;
+    }
+
+    .Output {
+        display: inline-block;
+        margin-left: 50px;
+        padding: 5px;
+        width: 300px;
+        background-color: white;
+        white-space: pre-line;
+    }
+    
+
+    input {
+        background-color: white;
+    }
+
+        input:hover {
+            background-color: lightgreen;
+        }
+
+    .field-validation-valid {
+        display: none;
+    }
+
+    input.input-validation-error {
+        background-color: peachpuff;
+        border: 2px solid red;
+    }
+
+    .field-validation-error {
+        color: red;
+    }
+    button{
+        width:100%;
+    }
+    button input{
+        width: 100%;
+    }
+</style>
+<div id="form">
+    <h2>Shipping Program Homework</h2>
+    @using (Html.BeginForm("Index", "Shipping", new { Area = "" }, FormMethod.Post, new { id = "Label" }))
+    {
+        <fieldset>
+            <legend>Sender Address Information</legend>
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Sender.Fname)
+                        @Html.ValidationMessageFor(m => m.Package.Sender.Fname, "First Name is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Sender.Lname)
+                        @Html.ValidationMessageFor(m => m.Package.Sender.Lname, "Last Name is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Sender.Address)
+                        @Html.ValidationMessageFor(m => m.Package.Sender.Address, "Address is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Sender.City)
+                        @Html.ValidationMessageFor(m => m.Package.Sender.City, "City is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.Package.Sender.State, Model.StateList)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip Code:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Sender.Zip)
+                        @Html.ValidationMessageFor(m => m.Package.Sender.Zip, "Valid 5 digit Zip Code is required.")
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Recipient Address Information</legend>
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Receiver.Fname)
+                        @Html.ValidationMessageFor(m => m.Package.Receiver.Fname, "First Name is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Receiver.Lname)
+                        @Html.ValidationMessageFor(m => m.Package.Receiver.Lname, "Last Name is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Receiver.Address)
+                        @Html.ValidationMessageFor(m => m.Package.Receiver.Address, "Address is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Receiver.City)
+                        @Html.ValidationMessageFor(m => m.Package.Receiver.City, "City is required.")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.Package.Receiver.State, Model.StateList)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip Code:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.Receiver.Zip)
+                        @Html.ValidationMessageFor(m => m.Package.Receiver.Zip, "Valid 5 digit Zip Code is required.")
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>
+                Shipping Method
+            </legend>
+            <table>
+                <tr>
+                    <td id="radio">
+                        @foreach (var ship in Model.ShippingList) {
+                            @Html.RadioButtonFor(m => m.Package.shippingType, ship.Description)@ship.Description
+                        }
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>
+                Package Information
+            </legend>
+            <table>
+                <tr>
+                    <td>Weight oz</td>
+                    <td>@Html.TextBoxFor(m => m.Package.weight)</td>
+                </tr>
+                <tr>
+                    <td>Cost per oz</td>
+                    <td>@Html.TextBoxFor(m => m.Package.costPerOz)</td>
+                </tr>
+                <tr>
+                    <td>Shipping Cost</td>
+                    <td>@Html.TextBoxFor(m => m.Package.shippingCost)</td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset><div class="button"><input  type="submit" value="Calculate"></div></fieldset>
+        
+        <fieldset>
+            <legend>Mailing Label</legend>
+            <label class="Output">@Model.Package.ShippingLabel</label>
+        </fieldset>
+
+    }
+</div>
+

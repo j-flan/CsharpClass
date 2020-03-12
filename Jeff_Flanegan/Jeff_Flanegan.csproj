@@ -137,10 +137,15 @@
     <Compile Include="Controllers\MyHomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShippingController.cs" />
     <Compile Include="Controllers\WageCalculatorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PackageViewModel.cs" />
+    <Compile Include="Models\Overnight.cs" />
+    <Compile Include="Models\TwoDay.cs" />
+    <Compile Include="Models\Package.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\WageCalculator.cs" />
@@ -188,6 +193,7 @@
     <Content Include="Views\Label\Index.cshtml" />
     <Content Include="Views\WageCalculator\Index.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Shipping\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
