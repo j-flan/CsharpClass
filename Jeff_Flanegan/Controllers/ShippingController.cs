@@ -40,8 +40,19 @@ namespace Jeff_Flanegan.Controllers
         }
         public void LoadPackageFromForm(Package myPackage, PackageViewModel model)
         {
-            myPackage.Sender = model.Package.Sender;
-            myPackage.Receiver = model.Package.Receiver;
+           
+            myPackage.Sender.Fname = model.Package.Sender.Fname;
+            myPackage.Sender.Lname = model.Package.Sender.Lname;
+            myPackage.Sender.Address = model.Package.Sender.Address;
+            myPackage.Sender.City = model.Package.Sender.City;
+            myPackage.Sender.State = model.Package.Sender.State;
+
+            myPackage.Receiver.Fname = model.Package.Receiver.Fname;
+            myPackage.Receiver.Lname = model.Package.Receiver.Lname;
+            myPackage.Receiver.Address = model.Package.Receiver.Address;
+            myPackage.Receiver.City = model.Package.Receiver.City;
+            myPackage.Receiver.State = model.Package.Receiver.State;
+
             myPackage.weight = model.Package.weight;
             myPackage.costPerOz = model.Package.costPerOz;
             myPackage.shippingType = model.Package.shippingType;
