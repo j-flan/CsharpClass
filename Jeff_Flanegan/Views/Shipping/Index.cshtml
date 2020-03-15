@@ -194,11 +194,17 @@
             <table>
                 <tr>
                     <td>Weight oz</td>
-                    <td>@Html.TextBoxFor(m => m.Package.weight)</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.weight)
+                        @Html.ValidationMessageFor(m => m.Package.Receiver.Zip, "Must be between 1 and 100")
+                    </td>
                 </tr>
                 <tr>
                     <td>Cost per oz</td>
-                    <td>@Html.TextBoxFor(m => m.Package.costPerOz)</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Package.costPerOz)
+                        @Html.ValidationMessageFor(m => m.Package.Receiver.Zip, "Minimum is 1")
+                    </td>
                 </tr>
                 <tr>
                     <td>Shipping Cost</td>

@@ -23,29 +23,11 @@ namespace Jeff_Flanegan.Models
                 return _Receiver;
             }
         }
+        [Range(1,100)]
+        public Decimal weight { get; set; }
         
-        public Decimal weight {
-            set
-            {
-
-                if (value > 0 && value <= 100) weight = value;
-            }
-            get
-            {
-                return weight;
-            }
-        }
-        
-        public Decimal costPerOz {
-            set
-            {
-                if (value > 0) costPerOz = value;
-            }
-            get
-            {
-                return costPerOz;
-            }
-        }
+        [Range(1, 100000)]
+        public Decimal costPerOz { get; set; }
 
             
         public string shippingType { get; set; }
